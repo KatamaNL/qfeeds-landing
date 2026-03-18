@@ -12,10 +12,10 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#020a29;--bg-light:#0a1a3a;--bg-card:#0c1f42;
+  --bg:#020a29;--bg-light:#0a1a3a;--bg-card:#0c1f42;--bg-card-hover:#112952;
   --pink:#db0eb7;--pink-dim:#c00da3;--pink-glow:rgba(219,14,183,.12);
   --green:#0cf57e;--green-dim:rgba(12,245,126,.12);--green-border:rgba(12,245,126,.25);
-  --blue:#2ea3f2;
+  --blue:#2ea3f2;--blue-dim:#005a87;
   --text:#fff;--text-mid:#b0bec5;--text-dim:#5a7089;
   --border:rgba(255,255,255,.06);
   --font-display:'Barlow Condensed',sans-serif;
@@ -34,6 +34,8 @@ img{max-width:100%;height:auto}
 .btn-primary:hover{background:#e620c5;box-shadow:0 6px 30px rgba(219,14,183,.35);transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--pink)}
 .btn-outline:hover{background:var(--pink-glow)}
+.btn-white{background:#fff;color:var(--bg);border-color:#fff}
+.btn-white:hover{background:#f0f0f0}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,10,41,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 0}
@@ -88,16 +90,22 @@ nav .nav-cta{font-size:.9rem;padding:10px 24px}
 .ticker-item .dot.warn{background:#ffbd2e}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* INTEGRATIONS - WHITE */
-.integrations{padding:72px 0 16px;text-align:center}
-.integrations h2{font-family:var(--font-display);font-weight:700;font-size:1.5rem;margin-bottom:36px;color:var(--text)}
+/* INTEGRATIONS */
+.integrations{padding:72px 0 48px;text-align:center;background:#fff;color:#1a1a2e}
+.integrations h2{font-family:var(--font-display);font-weight:700;font-size:1.5rem;margin-bottom:36px;color:#1a1a2e}
 .logo-row{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap;margin-bottom:20px}
 .logo-row img{height:40px;max-width:160px;object-fit:contain;opacity:.85;transition:opacity .2s}
 .logo-row img:hover{opacity:1}
 .setup-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.85rem;color:var(--pink);margin-top:12px}
 
 /* WAVE */
-.wave-img{width:100%;display:block}
+.wave-transition{position:relative;height:300px;overflow:hidden;margin:0;padding:0}
+.wave-transition img{position:absolute;left:50%;transform:translateX(-50%);width:100%;min-width:1440px;height:auto;opacity:.9}
+.wave-top{background:#fff;margin-bottom:-1px}
+.wave-top img{bottom:0}
+.wave-bottom{background:var(--bg);margin-top:-1px;overflow:hidden}
+.wave-bottom img{top:0;mix-blend-mode:screen;mask-image:linear-gradient(180deg,white 40%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,white 40%,transparent 100%)}
+.integrations{padding-top:40px;padding-bottom:16px;margin:0}
 
 /* SECTION HEADERS */
 .sh{text-align:center;margin-bottom:48px}
@@ -106,8 +114,9 @@ nav .nav-cta{font-size:.9rem;padding:10px 24px}
 .sh p{color:var(--text-mid);font-size:1.05rem;max-width:600px;margin:0 auto}
 
 /* FEATURES */
-.features{padding:80px 0}
+.features{padding:80px 0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg-light) 100%)}
 .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.features-visual{position:relative}
 .features-visual img{border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.4)}
 .features-list{display:flex;flex-direction:column;gap:24px}
 .feat{display:flex;gap:16px;align-items:flex-start}
@@ -140,22 +149,16 @@ nav .nav-cta{font-size:.9rem;padding:10px 24px}
 
 /* REVIEWS */
 .reviews{padding:80px 0;background:var(--bg-light)}
-.reviews-grid{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;margin-top:40px}
-.reviews-summary{text-align:center}
-.reviews-summary .rating-label{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin-bottom:8px}
-.stars{color:#fbbf24;font-size:1.4rem;letter-spacing:2px;margin-bottom:4px}
-.reviews-summary .count{font-size:.85rem;color:var(--text-mid);margin-bottom:12px}
-.reviews-summary .count a{color:var(--text);text-decoration:underline}
-.trustindex{font-size:.8rem;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:6px}
-.review-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.review-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:24px}
-.review-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.review-avatar{width:40px;height:40px;border-radius:50%;background:var(--bg-light);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:var(--pink);font-size:1.1rem}
-.review-name{font-weight:600;font-size:.9rem}
-.review-date{font-size:.75rem;color:var(--text-dim)}
-.review-stars{color:#fbbf24;font-size:.9rem;margin-bottom:8px}
-.review-text{font-size:.88rem;color:var(--text-mid);line-height:1.6;font-style:italic}
-.g-icon{margin-left:auto;opacity:.4;flex-shrink:0}
+.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.reviews-left{display:flex;flex-direction:column;gap:24px}
+.review-quote{font-size:1.2rem;font-style:italic;color:var(--text);line-height:1.7;padding-left:20px;border-left:3px solid var(--pink)}
+.review-author{font-weight:600;font-size:.9rem;color:var(--text-mid)}
+.review-role{font-size:.8rem;color:var(--text-dim)}
+.reviews-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.review-stat{padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px}
+.review-stat-value{font-family:var(--font-display);font-weight:800;font-size:1.8rem;color:var(--text);margin-bottom:4px}
+.review-stat-value .accent{color:var(--green)}
+.review-stat-label{font-size:.82rem;color:var(--text-dim)}
 
 /* HOW */
 .how{padding:80px 0}
@@ -165,11 +168,6 @@ nav .nav-cta{font-size:.9rem;padding:10px 24px}
 .step h3{font-family:var(--font-display);font-weight:700;font-size:1.2rem;margin-bottom:8px}
 .step p{font-size:.9rem;color:var(--text-mid)}
 
-/* EU */
-.eu-section{padding:40px 0;text-align:center;border-top:1px solid var(--border)}
-.eu-section img{height:64px;margin-bottom:12px;opacity:.8}
-.eu-section p{color:var(--text-dim);font-size:.85rem}
-
 /* CTA */
 .cta{padding:100px 0;text-align:center;position:relative;overflow:hidden}
 .cta-bg{position:absolute;inset:0;z-index:0}
@@ -177,7 +175,6 @@ nav .nav-cta{font-size:.9rem;padding:10px 24px}
 .cta-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(219,14,183,.08) 0%,var(--bg) 70%)}
 .cta .container{position:relative;z-index:2}
 .cta h2{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-bottom:16px}
-.cta .accent{color:var(--pink)}
 .cta p{color:var(--text-mid);font-size:1.1rem;max-width:600px;margin:0 auto 32px}
 .trust-row{display:flex;justify-content:center;gap:32px;margin-top:40px;flex-wrap:wrap}
 .trust-item{font-size:.82rem;color:var(--text-dim);display:flex;align-items:center;gap:6px}
@@ -205,7 +202,7 @@ footer .links a:hover{color:var(--pink)}
   .logo-row img{height:28px}
   .trust-bar{grid-template-columns:repeat(2,1fr)}
   .reviews-grid{grid-template-columns:1fr}
-  .review-cards{grid-template-columns:1fr}
+  .reviews-stats{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
   .hero{padding:120px 0 60px}
@@ -217,6 +214,7 @@ footer .links a:hover{color:var(--pink)}
   .trust-bar{grid-template-columns:1fr 1fr}
 }
 
+/* SCROLL ANIM */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
@@ -226,14 +224,18 @@ footer .links a:hover{color:var(--pink)}
 <!-- NAV -->
 <nav>
   <div class="container">
-    <a href="https://qfeeds.com/" class="logo"><img src="https://qfeeds.com/wp-content/uploads/2024/05/White-logo-no-background.png" alt="Q-Feeds" height="36"></a>
+    <a href="https://qfeeds.com/" class="logo">
+      <img src="https://qfeeds.com/wp-content/uploads/2024/05/White-logo-no-background.png" alt="Q-Feeds" height="36">
+    </a>
     <a href="https://qfeeds.com/start-trial-license/" class="btn btn-primary nav-cta">Start Free Trial</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"><img src="https://qfeeds.com/wp-content/uploads/2026/02/ai-010-scaled-1.jpg" alt="" loading="eager"></div>
+  <div class="hero-bg">
+    <img src="https://qfeeds.com/wp-content/uploads/2026/02/ai-010-scaled-1.jpg" alt="" loading="eager">
+  </div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">Free Community Edition available</div>
@@ -257,16 +259,30 @@ footer .links a:hover{color:var(--pink)}
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-bar-item"><div class="trust-bar-num">2,500<span class="accent">+</span></div><div class="trust-bar-label">Threat sources curated</div></div>
-  <div class="trust-bar-item"><div class="trust-bar-num">20 <span class="accent">min</span></div><div class="trust-bar-label">Update frequency (Premium)</div></div>
-  <div class="trust-bar-item"><div class="trust-bar-num"><span class="accent">&lt;</span> 5 min</div><div class="trust-bar-label">Setup time</div></div>
-  <div class="trust-bar-item"><div class="trust-bar-num">EU <span class="accent">&#9733;</span></div><div class="trust-bar-label">Made &amp; hosted in Europe</div></div>
+  <div class="trust-bar-item">
+    <div class="trust-bar-num">2,500<span class="accent">+</span></div>
+    <div class="trust-bar-label">Threat sources curated</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-bar-num">20 <span class="accent">min</span></div>
+    <div class="trust-bar-label">Update frequency (Premium)</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-bar-num"><span class="accent">&lt;</span> 5 min</div>
+    <div class="trust-bar-label">Setup time</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-bar-num">EU <span class="accent">&#9733;</span></div>
+    <div class="trust-bar-label">Made &amp; hosted in Europe</div>
+  </div>
 </div>
 
 <!-- TICKER -->
-<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
 
-<!-- INTEGRATIONS (WHITE) -->
+<!-- INTEGRATIONS -->
 <section class="integrations">
   <div class="container">
     <h2 class="reveal">Easy integration with our pre-built integrations</h2>
@@ -284,15 +300,21 @@ footer .links a:hover{color:var(--pink)}
   </div>
 </section>
 
-<!-- WAVE -->
-<img class="wave-img" src="https://qfeeds.com/wp-content/uploads/2026/02/ai-010-scaled-1.jpg" alt="" loading="lazy">
+<!-- WAVE TOP - ai-011 (white to dark transition start) -->
+<div class="wave-transition wave-top">
+  <img src="https://qfeeds.com/wp-content/uploads/2024/05/ai-011-scaled-1.jpg" alt="" loading="lazy">
+</div>
+<!-- WAVE BOTTOM - ai-010 (dark transition continues) -->
+<div class="wave-transition wave-bottom">
+  <img src="https://qfeeds.com/wp-content/uploads/2026/02/ai-010-scaled-1.jpg" alt="" loading="lazy">
+</div>
 
 <!-- FEATURES -->
 <section class="features">
   <div class="container">
     <div class="features-grid">
       <div class="features-visual reveal">
-        <img src="https://qfeeds.com/wp-content/uploads/2024/05/ai-009-1.jpg" alt="Q-Feeds threat intelligence" loading="lazy">
+        <img src="https://qfeeds.com/wp-content/uploads/2024/05/ai-009-1.jpg" alt="Q-Feeds threat intelligence dashboard" loading="lazy">
       </div>
       <div class="features-list">
         <div class="sh" style="text-align:left;margin-bottom:32px">
@@ -305,7 +327,7 @@ footer .links a:hover{color:var(--pink)}
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9l6 6M15 9l-6 6"/></svg></div>
-          <div><h3>Domain &amp; URL Blocklists</h3><p>Malicious domains and URLs for phishing, malware distribution, and C2. Direct import into your firewall or DNS resolver.</p></div>
+          <div><h3>Domain &amp; URL Blocklists</h3><p>Malicious domains and URLs used for phishing, malware distribution, and command &amp; control. Direct import into your firewall or DNS resolver.</p></div>
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
@@ -313,7 +335,7 @@ footer .links a:hover{color:var(--pink)}
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div><h3>EASM &amp; Darkweb Monitoring</h3><p>External attack surface management shows what attackers see. Darkweb monitoring alerts you when your credentials appear on underground forums.</p></div>
+          <div><h3>EASM &amp; Darkweb Monitoring</h3><p>External attack surface management shows what attackers see. Darkweb monitoring alerts you when your credentials or domains appear on underground forums.</p></div>
         </div>
       </div>
     </div>
@@ -338,7 +360,7 @@ footer .links a:hover{color:var(--pink)}
     <div class="sh">
       <p class="label reveal">Pricing</p>
       <h2 class="reveal">No enterprise sales calls.<br>Just pick a plan.</h2>
-      <p class="reveal">All plans support Fortinet, OPNsense, Sophos, Palo Alto &amp; Check Point. Cancel anytime.</p>
+      <p class="reveal">All plans include support for Fortinet, OPNsense, Sophos, Palo Alto &amp; Check Point. Cancel anytime.</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card reveal">
@@ -388,40 +410,15 @@ footer .links a:hover{color:var(--pink)}
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- SOCIAL PROOF -->
 <section class="reviews">
   <div class="container">
     <div class="sh">
       <p class="label reveal">Don't take our word for it</p>
       <h2 class="reveal">Customer References</h2>
     </div>
-    <div class="reviews-grid reveal">
-      <div class="reviews-summary">
-        <div class="rating-label">EXCELLENT</div>
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="count">Based on <a href="https://www.trustindex.io/reviews/qfeeds.com" target="_blank" rel="noopener">20 reviews</a></div>
-        <div class="trustindex"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><circle cx="8" cy="8" r="7" fill="#28c840"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Verified by Trustindex</div>
-      </div>
-      <div class="review-cards">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">A</div>
-            <div><div class="review-name">Adrian Badea (ab-cybermate)</div><div class="review-date">2 weeks ago</div></div>
-            <svg class="g-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"At first I heard as new plugin for Opnsense. Then I had a look what Q-Feeds is and discovered more. It is the organisation that keeps updated database of bad actors..."</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">P</div>
-            <div><div class="review-name">Patrick Brochu</div><div class="review-date">2 weeks ago</div></div>
-            <svg class="g-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Using it with Opnsense, works great and I can see IPs being blocked in the logs because of it. I guess it works for at least some of the traffic hitting me!..."</p>
-        </div>
-      </div>
+    <div class="reveal" style="max-width:900px;margin:0 auto">
+      <div data-src="https://cdn.trustindex.io/loader.js?e435ed759a3d406eb44611efa1f"></div>
     </div>
   </div>
 </section>
@@ -434,24 +431,30 @@ footer .links a:hover{color:var(--pink)}
       <h2 class="reveal">Three steps. Five minutes. Threats blocked.</h2>
     </div>
     <div class="how-grid">
-      <div class="step reveal"><div class="step-n">01</div><h3>Create Your Account</h3><p>Sign up and choose your plan. Community edition is free forever — no credit card, no time limit.</p></div>
-      <div class="step reveal"><div class="step-n">02</div><h3>Configure Your Firewall</h3><p>Follow our step-by-step guide. Copy the feed URL, paste it in your config. Guides for Fortinet, OPNsense, Sophos and more.</p></div>
-      <div class="step reveal"><div class="step-n">03</div><h3>Threats Blocked Automatically</h3><p>Your firewall blocks known malicious IPs, domains, and URLs. Feeds update in the background — set and forget.</p></div>
+      <div class="step reveal">
+        <div class="step-n">01</div>
+        <h3>Create Your Account</h3>
+        <p>Sign up and choose your plan. Community edition is free forever — no credit card, no time limit, no catches.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">02</div>
+        <h3>Configure Your Firewall</h3>
+        <p>Follow our step-by-step guide for your specific firewall. Copy the feed URL, paste it in your config. Guides for Fortinet, OPNsense, Sophos and more.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">03</div>
+        <h3>Threats Blocked Automatically</h3>
+        <p>Your firewall now blocks known malicious IPs, domains, and URLs automatically. Feeds update in the background — set and forget.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EU -->
-<section class="eu-section">
-  <div class="container reveal">
-    <img src="https://qfeeds.com/wp-content/uploads/2025/05/made-europe-label-european-quality-sticker-icon-vector-illustration_570092-820-1-300x200.png" alt="Made in Europe" loading="lazy">
-    <p>Q-Feeds is a European company. All data is processed and stored within the EU.</p>
-  </div>
-</section>
-
-<!-- CTA -->
+<!-- FINAL CTA -->
 <section class="cta">
-  <div class="cta-bg"><img src="https://qfeeds.com/wp-content/uploads/2024/05/ai-011-scaled-1.jpg" alt="" loading="lazy"></div>
+  <div class="cta-bg">
+    <img src="https://qfeeds.com/wp-content/uploads/2024/05/ai-011-scaled-1.jpg" alt="" loading="lazy">
+  </div>
   <div class="container">
     <h2 class="reveal">Stop guessing.<br><span class="accent">Start blocking.</span></h2>
     <p class="reveal">Built by security engineers, for security engineers. Join 1,200+ firewalls already running Q-Feeds threat intelligence feeds.</p>
@@ -465,6 +468,7 @@ footer .links a:hover{color:var(--pink)}
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <a href="https://qfeeds.com/" class="logo"><img src="https://qfeeds.com/wp-content/uploads/2024/05/White-logo-no-background.png" alt="Q-Feeds"></a>
@@ -479,14 +483,15 @@ footer .links a:hover{color:var(--pink)}
 </footer>
 
 <script>
+// TERMINAL
 !function(){var lines=[
 {t:'prompt',s:'$ qfeeds status'},{t:'out',s:'Feed: active | Sources: 2,547 | Last sync: 12s ago'},{t:'out',s:''},
 {t:'prompt',s:'$ qfeeds tail --live'},
 {t:'block',s:'BLOCK  185.220.101.34    TOR exit node       DE'},
 {t:'block',s:'BLOCK  45.155.205.233    Brute-force SSH     RU'},
 {t:'allow',s:'ALLOW  151.101.1.140     Fastly CDN          US'},
-{t:'block',s:'BLOCK  171.25.193.78     Known C2 server     SE'},
-{t:'allow',s:'ALLOW  172.217.14.206    Google DNS          US'},
+{t:'block',s:'BLOCK  171.25.193.78     TOR exit node       SE'},
+{t:'allow',s:'ALLOW  8.8.8.8           Google DNS          US'},
 {t:'block',s:'BLOCK  89.248.167.131    Port scanner        NL'},
 {t:'block',s:'BLOCK  194.26.29.102     Botnet member       UA'},
 {t:'allow',s:'ALLOW  13.107.42.14      Microsoft 365       US'},
@@ -498,6 +503,7 @@ if(l.t==='prompt')d.innerHTML='<span class="prompt">'+l.s.substring(0,2)+'</span
 else d.innerHTML='<span class="'+l.t+'">'+l.s+'</span>';
 el.appendChild(d);i++;setTimeout(add,i<4?500:250)}setTimeout(add,600)}();
 
+// TICKER
 !function(){var t=[
 {ip:'185.220.101.34',l:'TOR Exit'},{ip:'45.155.205.233',l:'SSH Brute'},
 {ip:'89.248.167.131',l:'Port Scan'},{ip:'194.26.29.102',l:'Botnet C2'},
@@ -511,12 +517,17 @@ for(var r=0;r<3;r++)t.forEach(function(x){
 h+='<span class="ticker-item"><span class="dot'+(Math.random()>.7?' warn':'')+'"></span>'+x.ip+' — '+x.l+'</span>'});
 el.innerHTML=h}();
 
+// TRUSTINDEX LOADER
+!function(){var s=document.createElement('script');s.async=true;s.defer=true;s.src='https://cdn.trustindex.io/loader.js';document.body.appendChild(s)}();
+
+// SCROLL REVEAL
 !function(){var els=document.querySelectorAll('.reveal'),
 obs=new IntersectionObserver(function(e){e.forEach(function(x){
 if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},
 {threshold:.1,rootMargin:'0px 0px -30px 0px'});
 els.forEach(function(e){obs.observe(e)})}();
 
+// COUNTER
 !function(){var nums=document.querySelectorAll('[data-count]'),
 obs=new IntersectionObserver(function(e){e.forEach(function(x){
 if(!x.isIntersecting)return;var el=x.target,target=parseInt(el.dataset.count),
