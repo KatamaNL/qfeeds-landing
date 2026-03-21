@@ -6,6 +6,14 @@
 <title>Q-Feeds — Threat Intelligence Feeds for Your Firewall</title>
 <meta name="description" content="Real-time threat intelligence feeds for Fortinet, OPNsense, Sophos, Palo Alto & Check Point. IP reputation, blocklists, TAXII server, EASM. Free community edition.">
 <link rel="icon" href="https://qfeeds.com/wp-content/uploads/2024/05/cropped-Android.png?fit=32%2C32" sizes="32x32">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://qfeeds.com/get-started/">
+<meta property="og:title" content="Q-Feeds — Threat Intelligence Feeds for Your Firewall">
+<meta property="og:description" content="Real-time threat intelligence feeds for FortiGate, OPNsense, Sophos, Palo Alto & Check Point. IP reputation feeds, blocklists, TAXII server, EASM. Free community edition.">
+<meta property="og:url" content="https://qfeeds.com/get-started/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://qfeeds.com/wp-content/uploads/2024/05/ai-009-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -41,6 +49,9 @@ img{max-width:100%;height:auto}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,10,41,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 0}
 nav .container{display:flex;justify-content:space-between;align-items:center}
 nav .logo img{height:36px}
+nav .nav-links{display:flex;gap:24px;align-items:center}
+nav .nav-links a{color:var(--text-mid);font-size:.9rem;font-weight:500;transition:color .2s}
+nav .nav-links a:hover{color:var(--text)}
 nav .nav-cta{font-size:.9rem;padding:10px 24px}
 
 /* HERO */
@@ -211,6 +222,7 @@ footer .links a:hover{color:var(--pink)}
   .hero-cta{flex-direction:column;align-items:stretch}
   .hero-cta .btn{justify-content:center}
   nav .nav-cta{display:none}
+  nav .nav-links{display:none}
   .trust-row{flex-direction:column;align-items:center}
   .trust-bar{grid-template-columns:1fr 1fr}
 }
@@ -221,6 +233,8 @@ footer .links a:hover{color:var(--pink)}
 </style>
 </head>
 <body>
+<!-- GTM noscript -->
+<noscript><iframe src="https://sgtm.qfeeds.com/ns.html?id=GTM-TBKRKKTW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
 <nav>
@@ -228,7 +242,12 @@ footer .links a:hover{color:var(--pink)}
     <a href="https://qfeeds.com/" class="logo">
       <img src="https://qfeeds.com/wp-content/uploads/2024/05/White-logo-no-background.png" alt="Q-Feeds" height="36">
     </a>
-    <a href="https://qfeeds.com/start-trial-license/" class="btn btn-primary nav-cta">Start Free Trial</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://qfeeds.com/threat-intelligence-firewall-integrations/">Integrations</a>
+    </div>
+    <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-primary nav-cta">Start Free Trial</a>
   </div>
 </nav>
 
@@ -241,9 +260,9 @@ footer .links a:hover{color:var(--pink)}
     <div class="hero-content">
       <div class="hero-badge">Free Community Edition available</div>
       <h1>Your firewall is only as good as <span class="accent">its intel.</span></h1>
-      <p class="sub">Real-time threat intelligence feeds for Fortinet, OPNsense, Sophos, Palo Alto &amp; Check Point. Block malicious IPs, domains, and URLs before they reach your network. Setup in under 5 minutes.</p>
+      <p class="sub">Real-time threat intelligence feeds and IP reputation feeds for FortiGate, OPNsense, Sophos, Palo Alto &amp; Check Point firewalls. Block malicious IPs, domains, and URLs before they reach your network. Suricata rules, STIX/TAXII feeds, and blocklists ready in under 5 minutes.</p>
       <div class="hero-cta">
-        <a href="https://qfeeds.com/start-trial-license/" class="btn btn-primary">Start Free Trial</a>
+        <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-primary">Start 7-Day Free Trial</a>
         <a href="#pricing" class="btn btn-outline">View Pricing</a>
         <p class="note">7-day free trial — no credit card required</p>
       </div>
@@ -286,7 +305,7 @@ footer .links a:hover{color:var(--pink)}
 <!-- INTEGRATIONS -->
 <section class="integrations">
   <div class="container">
-    <h2 class="reveal">Easy integration with our pre-built integrations</h2>
+    <h2 class="reveal">Easy integration with your firewall</h2>
     <div class="logo-row reveal">
       <img src="https://qfeeds.com/wp-content/uploads/2025/12/palo-alto-logo-1.png" alt="Palo Alto Networks">
       <img src="https://qfeeds.com/wp-content/uploads/2025/12/check-point-logo-large-2024.png" alt="Check Point">
@@ -311,7 +330,7 @@ footer .links a:hover{color:var(--pink)}
 </div>
 
 <!-- FEATURES -->
-<section class="features">
+<section class="features" id="features">
   <div class="container">
     <div class="features-grid">
       <div class="features-visual reveal">
@@ -324,15 +343,15 @@ footer .links a:hover{color:var(--pink)}
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-          <div><h3>Real-time IP Reputation</h3><p>Continuously updated blocklists of malicious IP addresses. Botnets, C2 servers, scanners, and brute-force attackers blocked automatically.</p></div>
+          <div><h3>Real-time IP Reputation Feeds</h3><p>Continuously updated IP blocklists of malicious addresses. Botnets, C2 servers, scanners, and brute-force attackers blocked automatically on your FortiGate, OPNsense, or Sophos firewall.</p></div>
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9l6 6M15 9l-6 6"/></svg></div>
-          <div><h3>Domain &amp; URL Blocklists</h3><p>Malicious domains and URLs used for phishing, malware distribution, and command &amp; control. Direct import into your firewall or DNS resolver.</p></div>
+          <div><h3>Domain &amp; URL Blocklists</h3><p>Malicious domains and URLs used for phishing, malware distribution, and command &amp; control. Direct import into your firewall or DNS resolver. Compatible with Suricata rules for OPNsense IDS/IPS.</p></div>
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <div><h3>TAXII Server &amp; STIX Format</h3><p>Standards-based threat intelligence sharing. Integrate with any TAXII-compatible SIEM, SOAR, or threat intelligence platform.</p></div>
+          <div><h3>TAXII Server &amp; STIX Format</h3><p>Standards-based cyber threat intelligence sharing. Integrate with any TAXII-compatible SIEM, SOAR, or threat intelligence platform. Indicators of compromise (IOCs) in industry-standard format.</p></div>
         </div>
         <div class="feat reveal">
           <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -347,10 +366,10 @@ footer .links a:hover{color:var(--pink)}
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat reveal"><div class="num" data-count="2400000">0</div><div class="lbl">Malicious IPs tracked</div></div>
-      <div class="stat reveal"><div class="num" data-count="1200">0</div><div class="lbl">Firewalls protected</div></div>
-      <div class="stat reveal"><div class="num" data-count="2500">0</div><div class="lbl">Threat intel sources</div></div>
-      <div class="stat reveal"><div class="num" data-count="15">0</div><div class="lbl">Minute update cycle</div></div>
+      <div class="stat reveal"><div class="num" data-count="2400000">2.4M</div><div class="lbl">Malicious IPs tracked</div></div>
+      <div class="stat reveal"><div class="num" data-count="1200">1,200+</div><div class="lbl">Firewalls protected</div></div>
+      <div class="stat reveal"><div class="num" data-count="2500">2,500+</div><div class="lbl">Threat intel sources</div></div>
+      <div class="stat reveal"><div class="num" data-count="15">15</div><div class="lbl">Minute update cycle</div></div>
     </div>
   </div>
 </section>
@@ -370,13 +389,13 @@ footer .links a:hover{color:var(--pink)}
         <div class="pnote">No credit card required</div>
         <ul>
           <li>OSINT threat intelligence feeds</li>
-          <li>Data updated with 7-day delay</li>
+          <li>Data updated with 24-hour delay</li>
           <li>All firewall integrations</li>
           <li>7-day premium trial included</li>
           <li>Community support</li>
           <li>Setup documentation</li>
         </ul>
-        <a href="https://qfeeds.com/start-trial-license/" class="btn btn-outline">Get Started Free</a>
+        <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-outline">Get Started Free</a>
       </div>
       <div class="price-card pop reveal">
         <div class="tier">Plus</div>
@@ -391,7 +410,7 @@ footer .links a:hover{color:var(--pink)}
           <li>Weekly vulnerability scanner</li>
           <li>External attack surface management</li>
         </ul>
-        <a href="https://qfeeds.com/start-trial-license/" class="btn btn-primary">Start 7-Day Free Trial</a>
+        <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-primary">Start 7-Day Free Trial</a>
       </div>
       <div class="price-card reveal">
         <div class="tier">Premium</div>
@@ -405,7 +424,7 @@ footer .links a:hover{color:var(--pink)}
           <li>Brand protection + takedowns</li>
           <li>Priority support</li>
         </ul>
-        <a href="https://qfeeds.com/start-trial-license/" class="btn btn-primary">Start 7-Day Free Trial</a>
+        <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-primary">Start 7-Day Free Trial</a>
       </div>
     </div>
   </div>
@@ -440,7 +459,7 @@ footer .links a:hover{color:var(--pink)}
       <div class="step reveal">
         <div class="step-n">02</div>
         <h3>Configure Your Firewall</h3>
-        <p>Follow our step-by-step guide for your specific firewall. Copy the feed URL, paste it in your config. Guides for Fortinet, OPNsense, Sophos and more.</p>
+        <p>Follow our step-by-step guide for your specific firewall. Copy the feed URL, paste it in your config. Guides for FortiGate, OPNsense, Sophos, Palo Alto and more.</p>
       </div>
       <div class="step reveal">
         <div class="step-n">03</div>
@@ -458,8 +477,8 @@ footer .links a:hover{color:var(--pink)}
   </div>
   <div class="container">
     <h2 class="reveal">Stop guessing.<br><span class="accent">Start blocking.</span></h2>
-    <p class="reveal">Built by security engineers, for security engineers. Join 1,200+ firewalls already running Q-Feeds threat intelligence feeds.</p>
-    <a href="https://qfeeds.com/start-trial-license/" class="btn btn-primary reveal" style="font-size:1.1rem;padding:16px 40px">Start Your Free Trial</a>
+    <p class="reveal">Built by security engineers, for security engineers. Join 1,200+ FortiGate, OPNsense, and Sophos firewalls already running Q-Feeds threat intelligence feeds.</p>
+    <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-primary reveal" style="font-size:1.1rem;padding:16px 40px">Start Your Free Trial</a>
     <div class="trust-row reveal">
       <span class="trust-item"><svg viewBox="0 0 14 14"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.5 3.3 12.3l.7-4.1-3-2.9 4.2-.7L7 1z"/></svg>No credit card required</span>
       <span class="trust-item"><svg viewBox="0 0 14 14"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.5 3.3 12.3l.7-4.1-3-2.9 4.2-.7L7 1z"/></svg>7-day free trial</span>
@@ -473,16 +492,18 @@ footer .links a:hover{color:var(--pink)}
 <footer>
   <div class="container">
     <a href="https://qfeeds.com/" class="logo"><img src="https://qfeeds.com/wp-content/uploads/2024/05/White-logo-no-background.png" alt="Q-Feeds"></a>
-    <p>&copy; 2026 Q-Feeds B.V. — Threat intelligence feeds for Fortinet, OPNsense, Sophos, Palo Alto &amp; Check Point.</p>
+    <p>&copy; 2026 Q-Feeds B.V. — Threat intelligence feeds and IP reputation feeds for FortiGate, OPNsense, Sophos, Palo Alto &amp; Check Point.</p>
     <div class="links">
       <a href="https://qfeeds.com/pricing/">Pricing</a>
       <a href="https://qfeeds.com/cyber-threat-intelligence-cti-feeds/">Features</a>
       <a href="https://qfeeds.com/threat-intelligence-firewall-integrations/">Integrations</a>
-      <a href="https://qfeeds.com/start-trial-license/">Free Trial</a>
+      <a href="https://tip.qfeeds.com/views/auth/register.php">Free Trial</a>
     </div>
   </div>
 </footer>
 
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://sgtm.qfeeds.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TBKRKKTW');</script>
 <script>
 // TERMINAL
 !function(){var lines=[
@@ -519,7 +540,7 @@ h+='<span class="ticker-item"><span class="dot'+(Math.random()>.7?' warn':'')+'"
 el.innerHTML=h}();
 
 // TRUSTINDEX LOADER
-!function(){var s=document.createElement('script');s.async=true;s.defer=true;s.src='https://cdn.trustindex.io/loader.js';document.body.appendChild(s)}();
+!function(){var s=document.createElement('script');s.async=true;s.defer=true;s.src='https://cdn.trustindex.io/loader.js';s.integrity='sha384-oh6+oYu3yFPbkgDGEm8E4tVUF/Anj9J8p1i3/7DbE7eEEfhkwSleGOTvTT9jGfEz';s.crossOrigin='anonymous';document.body.appendChild(s)}();
 
 // SCROLL REVEAL
 !function(){var els=document.querySelectorAll('.reveal'),
