@@ -244,6 +244,44 @@ footer .links a:hover{color:var(--pink)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Q-Feeds",
+      "legalName": "Q-Feeds B.V.",
+      "url": "https://qfeeds.com",
+      "logo": "https://qfeeds.com/wp-content/uploads/2024/05/White-logo-no-background.png",
+      "description": "Real-time threat intelligence feeds and IP reputation feeds for firewalls.",
+      "address": {"@type": "PostalAddress", "addressCountry": "NL"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Q-Feeds Threat Intelligence",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web",
+      "offers": [
+        {"@type": "Offer", "name": "Community", "price": "0", "priceCurrency": "EUR", "description": "Free OSINT threat feeds with 24-hour delay"},
+        {"@type": "Offer", "name": "Plus", "price": "99", "priceCurrency": "EUR", "billingDuration": "P1Y", "description": "Commercial data, 4-hour updates, dark web monitoring, EASM"},
+        {"@type": "Offer", "name": "Premium", "price": "249", "priceCurrency": "EUR", "billingDuration": "P1Y", "description": "15-minute updates, daily vulnerability scanner, brand protection"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What firewalls does Q-Feeds support?", "acceptedAnswer": {"@type": "Answer", "text": "Q-Feeds integrates with FortiGate, OPNsense, Sophos, Palo Alto Networks, and Check Point firewalls. Each integration has a dedicated step-by-step setup guide."}},
+        {"@type": "Question", "name": "How do I set up threat feeds on my FortiGate?", "acceptedAnswer": {"@type": "Answer", "text": "Create your Q-Feeds account, copy the feed URL from your dashboard, and paste it into FortiGate under External Connectors > Threat Feeds. The entire process takes under 5 minutes."}},
+        {"@type": "Question", "name": "Does Q-Feeds support Suricata rules for OPNsense?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Q-Feeds provides Suricata IDS/IPS rules that you can import directly via OPNsense Services Intrusion Detection Rules."}},
+        {"@type": "Question", "name": "What is the difference between Community and Plus?", "acceptedAnswer": {"@type": "Answer", "text": "Community is free forever and includes OSINT-based threat feeds updated every 24 hours. Plus adds commercial threat data, 4-hour updates, dark web monitoring, and EASM for 99 EUR per year."}},
+        {"@type": "Question", "name": "How often are the threat feeds updated?", "acceptedAnswer": {"@type": "Answer", "text": "Community: every 24 hours. Plus: every 4 hours. Premium: every 15 minutes. All updates happen automatically."}},
+        {"@type": "Question", "name": "What is EASM and dark web monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "EASM continuously scans your internet-facing assets to show what attackers can see. Dark web monitoring alerts you when your credentials appear on underground forums. Both included in Plus and Premium."}}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!-- GTM noscript -->
