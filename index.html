@@ -647,20 +647,20 @@ footer .links a:hover{color:var(--pink)}
 
 // TRUSTINDEX LOADER (lazy: load when reviews section visible)
 !function(){
-  var container = document.querySelector('.reviews [data-src]');
-  if (!container) return;
+  var reviewSection = document.querySelector('.reviews');
+  if (!reviewSection) return;
   var loaded = false;
   var obs = new IntersectionObserver(function(entries) {
     if (entries[0].isIntersecting && !loaded) {
       loaded = true;
       var s = document.createElement('script');
       s.async = true;
-      s.src = container.getAttribute('data-src');
-      container.parentNode.insertBefore(s, container.nextSibling);
+      s.src = 'https://cdn.trustindex.io/loader.js';
+      reviewSection.appendChild(s);
       obs.disconnect();
     }
   }, {rootMargin: '200px'});
-  obs.observe(container);
+  obs.observe(reviewSection);
 }();
 
 // SCROLL DEPTH TRACKING (25/50/75/100%)
