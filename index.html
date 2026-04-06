@@ -181,6 +181,18 @@ nav .nav-cta{font-size:.9rem;padding:10px 24px}
 .step h3{font-family:var(--font-display);font-weight:700;font-size:1.2rem;margin-bottom:8px}
 .step p{font-size:.9rem;color:var(--text-mid)}
 
+/* FAQ */
+.faq{padding:80px 0;background:var(--bg-light)}
+.faq-grid{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 0;cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--text);transition:color .2s}
+.faq-q:hover{color:var(--pink)}
+.faq-q svg{width:20px;height:20px;stroke:var(--text-dim);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease-out}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{padding:0 0 20px;color:var(--text-mid);font-size:.95rem;line-height:1.7}
+
 /* CTA */
 .cta{padding:100px 0;text-align:center;position:relative;overflow:hidden}
 .cta-bg{position:absolute;inset:0;z-index:0}
@@ -246,6 +258,7 @@ footer .links a:hover{color:var(--pink)}
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a href="https://qfeeds.com/threat-intelligence-firewall-integrations/">Integrations</a>
     </div>
     <a href="https://tip.qfeeds.com/views/auth/register.php" class="btn btn-primary nav-cta">Start Free Trial</a>
@@ -466,6 +479,42 @@ footer .links a:hover{color:var(--pink)}
         <div class="step-n">03</div>
         <h3>Threats Blocked Automatically</h3>
         <p>Your firewall now blocks known malicious IPs, domains, and URLs automatically. Feeds update in the background — set and forget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="sh">
+      <p class="label reveal">FAQ</p>
+      <h2 class="reveal">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What firewalls does Q-Feeds support?<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="faq-a"><p>Q-Feeds integrates with FortiGate, OPNsense, Sophos, Palo Alto Networks, and Check Point firewalls. Each integration has a dedicated step-by-step setup guide. Configuration takes under 5 minutes.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I set up threat feeds on my FortiGate?<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="faq-a"><p>Create your Q-Feeds account, copy the feed URL from your dashboard, and paste it into FortiGate under External Connectors > Threat Feeds. The entire process takes under 5 minutes.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does Q-Feeds support Suricata rules for OPNsense?<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="faq-a"><p>Yes. Q-Feeds provides Suricata IDS/IPS rules that you can import directly via OPNsense > Services > Intrusion Detection > Rules. Rules are updated automatically with your subscription.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the difference between Community and Plus?<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="faq-a"><p>Community is free forever and includes OSINT-based threat feeds updated every 24 hours. Plus adds commercial threat data, 4-hour updates, dark web monitoring, and EASM for EUR 99 per year.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often are the threat feeds updated?<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="faq-a"><p>Community: every 24 hours. Plus: every 4 hours. Premium: every 15 minutes. All updates happen automatically once your firewall is configured.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is EASM and dark web monitoring?<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="faq-a"><p>EASM continuously scans your internet-facing assets to show what attackers can see. Dark web monitoring alerts you when your credentials appear on underground forums. Both are included in Plus and Premium plans.</p></div>
       </div>
     </div>
   </div>
