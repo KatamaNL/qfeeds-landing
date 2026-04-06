@@ -506,42 +506,99 @@ footer .links a:hover{color:var(--pink)}
 <!-- GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://sgtm.qfeeds.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TBKRKKTW');</script>
 <script>
-// TERMINAL
-!function(){var lines=[
-{t:'prompt',s:'$ qfeeds status'},{t:'out',s:'Feed: active | Sources: 2,547 | Last sync: 12s ago'},{t:'out',s:''},
-{t:'prompt',s:'$ qfeeds tail --live'},
-{t:'block',s:'BLOCK  185.220.101.34    TOR exit node       DE'},
-{t:'block',s:'BLOCK  45.155.205.233    Brute-force SSH     RU'},
-{t:'allow',s:'ALLOW  151.101.1.140     Fastly CDN          US'},
-{t:'block',s:'BLOCK  171.25.193.78     TOR exit node       SE'},
-{t:'allow',s:'ALLOW  8.8.8.8           Google DNS          US'},
-{t:'block',s:'BLOCK  89.248.167.131    Port scanner        NL'},
-{t:'block',s:'BLOCK  194.26.29.102     Botnet member       UA'},
-{t:'allow',s:'ALLOW  13.107.42.14      Microsoft 365       US'},
-{t:'block',s:'BLOCK  80.82.77.139      Mirai variant       BG'},
-],el=document.getElementById('terminal'),i=0;
-function add(){if(i>=lines.length)return;var l=lines[i],d=document.createElement('div');
-d.className='line';d.style.animationDelay=i*.12+'s';
-if(l.t==='prompt')d.innerHTML='<span class="prompt">'+l.s.substring(0,2)+'</span><span class="cmd">'+l.s.substring(2)+'</span>';
-else d.innerHTML='<span class="'+l.t+'">'+l.s+'</span>';
-el.appendChild(d);i++;setTimeout(add,i<4?500:250)}setTimeout(add,600)}();
+// DEFERRED: terminal, ticker, counter (decorative, not critical)
+(function() {
+  var idle = window.requestIdleCallback || function(cb) { setTimeout(cb, 1) };
 
-// TICKER
-!function(){var t=[
-{ip:'185.220.101.34',l:'TOR Exit'},{ip:'45.155.205.233',l:'SSH Brute'},
-{ip:'89.248.167.131',l:'Port Scan'},{ip:'194.26.29.102',l:'Botnet C2'},
-{ip:'80.82.77.139',l:'Mirai Bot'},{ip:'171.25.193.78',l:'C2 Server'},
-{ip:'162.247.74.27',l:'TOR Exit'},{ip:'198.235.24.51',l:'Cred Stuff'},
-{ip:'5.188.206.22',l:'Web Exploit'},{ip:'141.98.11.70',l:'DNS Amp'},
-{ip:'91.219.237.35',l:'Spam Bot'},{ip:'23.129.64.210',l:'TOR Exit'},
-{ip:'116.202.120.166',l:'Phishing'},{ip:'45.33.32.156',l:'Scanner'},
-],el=document.getElementById('ticker'),h='';
-for(var r=0;r<3;r++)t.forEach(function(x){
-h+='<span class="ticker-item"><span class="dot'+(Math.random()>.7?' warn':'')+'"></span>'+x.ip+' — '+x.l+'</span>'});
-el.innerHTML=h}();
+  idle(function() {
+    // TERMINAL
+    var lines=[
+    {t:'prompt',s:'$ qfeeds status'},{t:'out',s:'Feed: active | Sources: 2,547 | Last sync: 12s ago'},{t:'out',s:''},
+    {t:'prompt',s:'$ qfeeds tail --live'},
+    {t:'block',s:'BLOCK  185.220.101.34    TOR exit node       DE'},
+    {t:'block',s:'BLOCK  45.155.205.233    Brute-force SSH     RU'},
+    {t:'allow',s:'ALLOW  151.101.1.140     Fastly CDN          US'},
+    {t:'block',s:'BLOCK  171.25.193.78     TOR exit node       SE'},
+    {t:'allow',s:'ALLOW  8.8.8.8           Google DNS          US'},
+    {t:'block',s:'BLOCK  89.248.167.131    Port scanner        NL'},
+    {t:'block',s:'BLOCK  194.26.29.102     Botnet member       UA'},
+    {t:'allow',s:'ALLOW  13.107.42.14      Microsoft 365       US'},
+    {t:'block',s:'BLOCK  80.82.77.139      Mirai variant       BG'},
+    ],el=document.getElementById('terminal'),i=0;
+    function add(){if(i>=lines.length)return;var l=lines[i],d=document.createElement('div');
+    d.className='line';d.style.animationDelay=i*.12+'s';
+    if(l.t==='prompt')d.innerHTML='<span class="prompt">'+l.s.substring(0,2)+'</span><span class="cmd">'+l.s.substring(2)+'</span>';
+    else d.innerHTML='<span class="'+l.t+'">'+l.s+'</span>';
+    el.appendChild(d);i++;setTimeout(add,i<4?500:250)}setTimeout(add,600);
 
-// TRUSTINDEX LOADER
-!function(){var s=document.createElement('script');s.async=true;s.defer=true;s.src='https://cdn.trustindex.io/loader.js';s.integrity='sha384-oh6+oYu3yFPbkgDGEm8E4tVUF/Anj9J8p1i3/7DbE7eEEfhkwSleGOTvTT9jGfEz';s.crossOrigin='anonymous';document.body.appendChild(s)}();
+    // TICKER
+    var t=[
+    {ip:'185.220.101.34',l:'TOR Exit'},{ip:'45.155.205.233',l:'SSH Brute'},
+    {ip:'89.248.167.131',l:'Port Scan'},{ip:'194.26.29.102',l:'Botnet C2'},
+    {ip:'80.82.77.139',l:'Mirai Bot'},{ip:'171.25.193.78',l:'C2 Server'},
+    {ip:'162.247.74.27',l:'TOR Exit'},{ip:'198.235.24.51',l:'Cred Stuff'},
+    {ip:'5.188.206.22',l:'Web Exploit'},{ip:'141.98.11.70',l:'DNS Amp'},
+    {ip:'91.219.237.35',l:'Spam Bot'},{ip:'23.129.64.210',l:'TOR Exit'},
+    {ip:'116.202.120.166',l:'Phishing'},{ip:'45.33.32.156',l:'Scanner'},
+    ],tel=document.getElementById('ticker'),h='';
+    for(var r=0;r<3;r++)t.forEach(function(x){
+    h+='<span class="ticker-item"><span class="dot'+(Math.random()>.7?' warn':'')+'"></span>'+x.ip+' — '+x.l+'</span>'});
+    tel.innerHTML=h;
+
+    // COUNTER
+    var nums=document.querySelectorAll('[data-count]'),
+    cobs=new IntersectionObserver(function(e){e.forEach(function(x){
+    if(!x.isIntersecting)return;var el=x.target,target=parseInt(el.dataset.count),
+    start=performance.now(),dur=1400;
+    function fmt(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return Math.floor(n).toLocaleString()+'+';return n.toString()}
+    function step(now){var p=Math.min((now-start)/dur,1);p=1-Math.pow(1-p,3);
+    el.textContent=fmt(Math.floor(target*p));if(p<1)requestAnimationFrame(step)}
+    requestAnimationFrame(step);cobs.unobserve(el)})},{threshold:.5});
+    nums.forEach(function(n){cobs.observe(n)});
+  });
+})();
+
+// TRUSTINDEX LOADER (lazy: load when reviews section visible)
+!function(){
+  var reviewSection = document.querySelector('.reviews');
+  if (!reviewSection) return;
+  var loaded = false;
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !loaded) {
+      loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://cdn.trustindex.io/loader.js';
+      s.integrity = 'sha384-oh6+oYu3yFPbkgDGEm8E4tVUF/Anj9J8p1i3/7DbE7eEEfhkwSleGOTvTT9jGfEz';
+      s.crossOrigin = 'anonymous';
+      document.body.appendChild(s);
+      obs.disconnect();
+    }
+  }, {rootMargin: '200px'});
+  obs.observe(reviewSection);
+}();
+
+// SCROLL DEPTH TRACKING (25/50/75/100%)
+!function(){var thresholds=[25,50,75,100],fired={};
+window.addEventListener('scroll',function(){
+var h=document.documentElement,b=document.body,
+st=h.scrollTop||b.scrollTop,sh=h.scrollHeight||b.scrollHeight,
+pct=Math.round(st/(sh-h.clientHeight)*100);
+thresholds.forEach(function(t){if(pct>=t&&!fired[t]){fired[t]=true;
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'scroll_depth',scroll_percentage:t})}})},
+{passive:true})}();
+
+// CTA CLICK TRACKING
+!function(){document.addEventListener('click',function(e){
+var a=e.target.closest('a[href*="register.php"]');
+if(!a)return;
+e.preventDefault();
+var href=a.href,label=a.textContent.trim(),section=a.closest('section');
+var sectionId=section?(section.id||section.className.split(' ')[0]):'unknown';
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'cta_click',cta_text:label,cta_section:sectionId});
+setTimeout(function(){window.location.href=href},150)})}();
 
 // SCROLL REVEAL
 !function(){var els=document.querySelectorAll('.reveal'),
@@ -549,17 +606,6 @@ obs=new IntersectionObserver(function(e){e.forEach(function(x){
 if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},
 {threshold:.1,rootMargin:'0px 0px -30px 0px'});
 els.forEach(function(e){obs.observe(e)})}();
-
-// COUNTER
-!function(){var nums=document.querySelectorAll('[data-count]'),
-obs=new IntersectionObserver(function(e){e.forEach(function(x){
-if(!x.isIntersecting)return;var el=x.target,target=parseInt(el.dataset.count),
-start=performance.now(),dur=1400;
-function fmt(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return Math.floor(n).toLocaleString()+'+';return n.toString()}
-function step(now){var p=Math.min((now-start)/dur,1);p=1-Math.pow(1-p,3);
-el.textContent=fmt(Math.floor(target*p));if(p<1)requestAnimationFrame(step)}
-requestAnimationFrame(step);obs.unobserve(el)})},{threshold:.5});
-nums.forEach(function(n){obs.observe(n)})}();
 </script>
 </body>
 </html>
