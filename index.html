@@ -6,6 +6,7 @@
 <title>Q-Feeds — Threat Intelligence Feeds for Your Firewall</title>
 <meta name="description" content="Real-time threat intelligence feeds for Fortinet, OPNsense, Sophos, Palo Alto & Check Point. IP reputation, blocklists, TAXII server, EASM. Free community edition.">
 <link rel="icon" href="img/favicon.png" sizes="32x32">
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://qfeeds.com/get-started/">
 <meta property="og:title" content="Q-Feeds — Threat Intelligence Feeds for Your Firewall">
 <meta property="og:description" content="Real-time threat intelligence feeds for FortiGate, OPNsense, Sophos, Palo Alto & Check Point. IP reputation feeds, blocklists, TAXII server, EASM. Free community edition.">
@@ -13,10 +14,10 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="img/dashboard.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://sgtm.qfeeds.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -27,9 +28,9 @@
   --blue:#2ea3f2;--blue-dim:#005a87;
   --text:#fff;--text-mid:#b0bec5;--text-dim:#5a7089;
   --border:rgba(255,255,255,.06);
-  --font-display:'Barlow Condensed',sans-serif;
-  --font-body:'Inter',sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
+  --font-display:'Barlow Condensed',Impact,'Arial Narrow',Helvetica,sans-serif;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,monospace;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden}
