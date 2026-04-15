@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<base href="https://katamanl.github.io/qfeeds-landing/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Q-Feeds — Threat Intelligence Feeds for Your Firewall</title>
 <meta name="description" content="Real-time threat intelligence feeds for Fortinet, OPNsense, Sophos, Palo Alto & Check Point. IP reputation, blocklists, TAXII server, EASM. Free community edition.">
@@ -543,6 +544,28 @@ el.innerHTML=h}();
 
 // TRUSTINDEX LOADER (deferred to after page load)
 window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.defer=true;s.src='https://cdn.trustindex.io/loader.js';s.integrity='sha384-oh6+oYu3yFPbkgDGEm8E4tVUF/Anj9J8p1i3/7DbE7eEEfhkwSleGOTvTT9jGfEz';s.crossOrigin='anonymous';document.body.appendChild(s)});
+
+// SCROLL DEPTH TRACKING (25/50/75/100%)
+!function(){var thresholds=[25,50,75,100],fired={};
+window.addEventListener('scroll',function(){
+var h=document.documentElement,b=document.body,
+st=h.scrollTop||b.scrollTop,sh=h.scrollHeight||b.scrollHeight,
+pct=Math.round(st/(sh-h.clientHeight)*100);
+thresholds.forEach(function(t){if(pct>=t&&!fired[t]){fired[t]=true;
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'scroll_depth',scroll_percentage:t})}})},
+{passive:true})}();
+
+// CTA CLICK TRACKING (delay navigation for beacon)
+!function(){document.addEventListener('click',function(e){
+var a=e.target.closest('a[href*="register.php"]');
+if(!a)return;
+e.preventDefault();
+var href=a.href,label=a.textContent.trim(),section=a.closest('section');
+var sectionId=section?(section.id||section.className.split(' ')[0]):'unknown';
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'cta_click',cta_text:label,cta_section:sectionId});
+setTimeout(function(){window.location.href=href},150)})}();
 
 // SCROLL REVEAL
 !function(){var els=document.querySelectorAll('.reveal'),
