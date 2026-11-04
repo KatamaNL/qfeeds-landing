@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-04
+
+- docs(roadmap): nagang voorraadronde op bewijs (dotfiles-claude issue 1140). (@herriaan)
+
 ## v1.0.0 (2026-03-18)
 
 Initial release of the Q-Feeds landing page.
