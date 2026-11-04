@@ -10,14 +10,9 @@
 
 ## Next
 
-- [ ] Self-host images instead of referencing qfeeds.com
 - [x] Add Open Graph / Twitter Card meta tags for social sharing
   Nagelopen 4 nov 2026 (voorraadronde, dotfiles-claude issue 1140): index.html:11-16 heeft de og- en
   twitter-tags. (@herriaan)
-- [ ] Add structured data (JSON-LD) for SEO
 - [x] Set up GitHub Pages deployment
   Nagelopen 4 nov 2026 (voorraadronde, dotfiles-claude issue 1140): GET pages: status built,
   https://katamanl.github.io/qfeeds-landing/. (@herriaan)
-- [ ] Add cookie/privacy notice if analytics are added
-- [ ] A/B test hero headline and CTA copy
-- [ ] Add FAQ section (common objections / setup questions)

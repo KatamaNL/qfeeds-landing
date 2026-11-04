@@ -2,6 +2,7 @@
 
 ## 2026-11-04
 
+- docs(roadmap): 5 achterhaalde of dubbele items weg na de voorraadronde, op besluit van Herriaan (dotfiles-claude issue 1140). (@herriaan)
 - docs(roadmap): nagang voorraadronde op bewijs (dotfiles-claude issue 1140). (@herriaan)
 
 ## v1.0.0 (2026-03-18)
